@@ -108,66 +108,90 @@ export default function App() {
       try {
         // Sync Categories
         const catCol = collection(db, 'categories');
-        unsubscribeCategories = onSnapshot(catCol, async (snapshot) => {
-          if (!snapshot.empty) {
-            const list: Category[] = snapshot.docs.map((d) => d.data() as Category);
-            list.sort((a, b) => a.displayOrder - b.displayOrder);
-            setCategories(list);
-          } else {
-            // Seed categories if empty
-            try {
-              const batch = writeBatch(db);
-              initialCategories.forEach((cat) => {
-                const ref = doc(db, 'categories', cat.id);
-                batch.set(ref, cat);
-              });
-              await batch.commit();
-            } catch (seedErr) {
-              console.warn('[Veggie Nadu] Categories seed note:', seedErr);
+        unsubscribeCategories = onSnapshot(
+          catCol, 
+          async (snapshot) => {
+            if (!snapshot.empty) {
+              const list: Category[] = snapshot.docs.map((d) => d.data() as Category);
+              list.sort((a, b) => a.displayOrder - b.displayOrder);
+              setCategories(list);
+            } else {
+              // Seed categories if empty
+              try {
+                const batch = writeBatch(db);
+                initialCategories.forEach((cat) => {
+                  const ref = doc(db, 'categories', cat.id);
+                  batch.set(ref, cat);
+                });
+                await batch.commit();
+              } catch (seedErr) {
+                console.warn('[Veggie Nadu] Categories seed note:', seedErr);
+              }
             }
+          },
+          (error) => {
+            console.warn('[Veggie Nadu] Categories snapshot listener note:', error.message);
           }
-        });
+        );
 
         // Sync Products
         const prodCol = collection(db, 'products');
-        unsubscribeProducts = onSnapshot(prodCol, async (snapshot) => {
-          if (!snapshot.empty) {
-            const list: Product[] = snapshot.docs.map((d) => d.data() as Product);
-            setProducts(list);
-          } else {
-            // Seed initial products if collection is empty
-            try {
-              const batch = writeBatch(db);
-              initialProducts.forEach((prod) => {
-                const ref = doc(db, 'products', prod.id);
-                batch.set(ref, prod);
-              });
-              await batch.commit();
-            } catch (seedErr) {
-              console.warn('[Veggie Nadu] Products seed note:', seedErr);
+        unsubscribeProducts = onSnapshot(
+          prodCol, 
+          async (snapshot) => {
+            if (!snapshot.empty) {
+              const list: Product[] = snapshot.docs.map((d) => d.data() as Product);
+              setProducts(list);
+            } else {
+              // Seed initial products if collection is empty
+              try {
+                const batch = writeBatch(db);
+                initialProducts.forEach((prod) => {
+                  const ref = doc(db, 'products', prod.id);
+                  batch.set(ref, prod);
+                });
+                await batch.commit();
+              } catch (seedErr) {
+                console.warn('[Veggie Nadu] Products seed note:', seedErr);
+              }
             }
+          },
+          (error) => {
+            console.warn('[Veggie Nadu] Products snapshot listener note:', error.message);
           }
-        });
+        );
 
         // Sync Orders
         const orderCol = collection(db, 'orders');
-        unsubscribeOrders = onSnapshot(orderCol, (snapshot) => {
-          if (!snapshot.empty) {
-            const list: Order[] = snapshot.docs.map((d) => d.data() as Order);
-            list.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-            setOrders(list);
+        unsubscribeOrders = onSnapshot(
+          orderCol, 
+          (snapshot) => {
+            if (!snapshot.empty) {
+              const list: Order[] = snapshot.docs.map((d) => d.data() as Order);
+              list.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+              setOrders(list);
+            }
+          },
+          (error) => {
+            console.warn('[Veggie Nadu] Orders snapshot listener note:', error.message);
           }
-        });
+        );
 
         // Sync Bulk Requests
         const bulkCol = collection(db, 'bulk_requests');
-        unsubscribeBulk = onSnapshot(bulkCol, (snapshot) => {
-          if (!snapshot.empty) {
-            const list: BulkRequest[] = snapshot.docs.map((d) => d.data() as BulkRequest);
-            list.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-            setBulkRequests(list);
+        unsubscribeBulk = onSnapshot(
+          bulkCol, 
+          (snapshot) => {
+            if (!snapshot.empty) {
+              const list: BulkRequest[] = snapshot.docs.map((d) => d.data() as BulkRequest);
+              list.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+              setBulkRequests(list);
+            }
+          },
+          (error) => {
+            console.warn('[Veggie Nadu] Bulk requests snapshot listener note:', error.message);
           }
-        });
+        );
       } catch (err) {
         console.warn('[Veggie Nadu] Firestore listener fallback:', err);
       }
