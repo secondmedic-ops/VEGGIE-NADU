@@ -2,13 +2,14 @@
 
 export const SHOP_CONTACT = {
   name: 'VEGGIE NADU',
+  tagline: 'Fresh From Farm to Doorstep',
   phone: '+91 98765 43210',
   whatsapp: '+919876543210',
-  email: 'support@veggienadu.in',
-  address: 'Fresh Market Road, Tamil Nadu, India',
+  email: 'orders@veggienadu.com',
+  address: 'Koyambedu Wholesale Market, Chennai, Tamil Nadu - 600107',
   hours: '6:00 AM - 9:00 PM',
   timings: '6:00 AM - 9:00 PM',
-  pincodes: ['600001', '600002', '600028', '600040']
+  pincodes: ['600001', '600002', '600028', '600040', '600107']
 };
 
 export const initialCategories: Category[] = [
@@ -69,7 +70,7 @@ export const initialProducts: Product[] = [
     description: 'Firm green cooking plantains for roasts, bajji, and poriyal.',
     stock: 70,
     isOrganic: false,
-    isFeatured: false
+    isFeatured: true
   },
   {
     id: 'prod-005',
@@ -82,7 +83,7 @@ export const initialProducts: Product[] = [
     description: 'Tender, water-rich gourd suitable for kootu and stir-fry.',
     stock: 40,
     isOrganic: false,
-    isFeatured: false
+    isFeatured: true
   },
   {
     id: 'prod-006',
@@ -100,24 +101,24 @@ export const initialProducts: Product[] = [
 ];
 
 export const deliverySlots = [
-  { id: 'slot-morning', label: 'Morning (7:00 AM - 10:00 AM)', time: '07:00 - 10:00' },
-  { id: 'slot-afternoon', label: 'Afternoon (1:00 PM - 4:00 PM)', time: '13:00 - 16:00' },
-  { id: 'slot-evening', label: 'Evening (5:00 PM - 8:00 PM)', time: '17:00 - 20:00' }
+  { id: 'slot-1', label: 'Morning Slot (7:00 AM - 10:00 AM)', time: '07:00 - 10:00' },
+  { id: 'slot-2', label: 'Midday Slot (12:00 PM - 3:00 PM)', time: '12:00 - 15:00' },
+  { id: 'slot-3', label: 'Evening Slot (5:00 PM - 8:00 PM)', time: '17:00 - 20:00' }
 ];
 
 export const customerReviews = [
   {
     id: 'rev-1',
-    author: 'Kavitha R.',
+    author: 'Kavitha Ramanathan',
     rating: 5,
-    comment: 'Direct farm quality! The small onions and native tomatoes were fresh and aromatic.',
+    comment: 'The nati tomatoes and small onions are always crisp and farm fresh. Very dependable service!',
     date: '2026-03-01'
   },
   {
     id: 'rev-2',
-    author: 'Senthil Kumar',
+    author: 'Senthil Arumugam',
     rating: 5,
-    comment: 'Morning delivery is always punctual. Veggies stay crisp for days.',
+    comment: 'Prompt delivery and clean packaging. The greens stay fresh for days.',
     date: '2026-03-05'
   }
 ];
@@ -126,9 +127,11 @@ export const initialBanners = [
   {
     id: 'banner-1',
     title: 'Harvested at Dawn, Delivered by Noon',
-    subtitle: '100% Authentic Native Produce Across Tamil Nadu',
+    subtitle: '100% Authentic Native Vegetables across Tamil Nadu',
     image: 'https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&w=1200&q=80'
   }
 ];
 
 export const bannerSlides = initialBanners;
+
+export const testimonials = customerReviews;
