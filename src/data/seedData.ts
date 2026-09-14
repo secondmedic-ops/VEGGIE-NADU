@@ -1,5 +1,16 @@
 ﻿import { Category, Product } from '../types';
 
+export const SHOP_CONTACT = {
+  name: 'VEGGIE NADU',
+  phone: '+91 98765 43210',
+  whatsapp: '+919876543210',
+  email: 'support@veggienadu.in',
+  address: 'Fresh Market Road, Tamil Nadu, India',
+  hours: '6:00 AM - 9:00 PM',
+  timings: '6:00 AM - 9:00 PM',
+  pincodes: ['600001', '600002', '600028', '600040']
+};
+
 export const initialCategories: Category[] = [
   { id: 'cat-daily', name: 'Daily Essentials', nameTa: 'தினசரி காய்கறிகள்', icon: 'Sparkles' },
   { id: 'cat-leafy', name: 'Greens & Herbs', nameTa: 'கீரை வகைகள்', icon: 'Leaf' },
