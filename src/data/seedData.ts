@@ -98,3 +98,37 @@ export const initialProducts: Product[] = [
     isFeatured: true
   }
 ];
+
+export const deliverySlots = [
+  { id: 'slot-morning', label: 'Morning (7:00 AM - 10:00 AM)', time: '07:00 - 10:00' },
+  { id: 'slot-afternoon', label: 'Afternoon (1:00 PM - 4:00 PM)', time: '13:00 - 16:00' },
+  { id: 'slot-evening', label: 'Evening (5:00 PM - 8:00 PM)', time: '17:00 - 20:00' }
+];
+
+export const customerReviews = [
+  {
+    id: 'rev-1',
+    author: 'Kavitha R.',
+    rating: 5,
+    comment: 'Direct farm quality! The small onions and native tomatoes were fresh and aromatic.',
+    date: '2026-03-01'
+  },
+  {
+    id: 'rev-2',
+    author: 'Senthil Kumar',
+    rating: 5,
+    comment: 'Morning delivery is always punctual. Veggies stay crisp for days.',
+    date: '2026-03-05'
+  }
+];
+
+export const initialBanners = [
+  {
+    id: 'banner-1',
+    title: 'Harvested at Dawn, Delivered by Noon',
+    subtitle: '100% Authentic Native Produce Across Tamil Nadu',
+    image: 'https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&w=1200&q=80'
+  }
+];
+
+export const bannerSlides = initialBanners;
