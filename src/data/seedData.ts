@@ -1,77 +1,89 @@
-import { VegetableItem } from '../types';
-export const SEED_VEGETABLES: VegetableItem[] = [
+﻿import { Category, Product } from '../types';
+
+export const initialCategories: Category[] = [
+  { id: 'cat-daily', name: 'Daily Essentials', nameTa: 'தினசரி காய்கறிகள்', icon: 'Sparkles' },
+  { id: 'cat-leafy', name: 'Greens & Herbs', nameTa: 'கீரை வகைகள்', icon: 'Leaf' },
+  { id: 'cat-gourds', name: 'Gourds & Squash', nameTa: 'காய் வகைகள்', icon: 'Apple' },
+  { id: 'cat-roots', name: 'Tubers & Roots', nameTa: 'கிழங்கு வகைகள்', icon: 'Carrot' }
+];
+
+export const initialProducts: Product[] = [
   {
-    id: 'veg-001',
+    id: 'prod-001',
     name: 'Tomato (Local / Nati)',
-    regionalName: '�b�া��্ূ�おඩ  / Nattu Thakkali',
-    category: 'daily_essentials',
-    pricePerKg: 38,
-    stockKg: 120,
+    nameTa: 'நாட்டு தக்காளி',
+    categoryId: 'cat-daily',
+    price: 38,
     unit: 'kg',
     image: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=600&q=80',
     description: 'Farm-fresh tangy native tomatoes, ideal for rasam, sambar, and everyday curries.',
-    inStock: true,
-    organic: true
+    stock: 120,
+    isOrganic: true,
+    isFeatured: true
   },
   {
-    id: 'veg-002',
+    id: 'prod-002',
     name: 'Small Onion (Shallots)',
-    regionalName: 'चीनन वেঙ்�rਾ௞鮮ௌ / Chinna Vengayam',
-    category: 'daily_essentials',
-    pricePerKg: 65,
-    stockKg: 85,
+    nameTa: 'சின்ன வெங்காயம்',
+    categoryId: 'cat-daily',
+    price: 65,
     unit: 'kg',
     image: 'https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?auto=format&fit=crop&w=600&q=80',
     description: 'Pungent, authentic sambar onions essential for South Indian recipes.',
-    inStock: true
+    stock: 85,
+    isOrganic: false,
+    isFeatured: true
   },
   {
-    id: 'veg-003',
+    id: 'prod-003',
     name: 'Drumstick (Moringa)',
-    regionalName: 'மு�rுঙ்শে্শਾ௞鮮ௌ / Murungaikkai',
-    category: 'daily_essentials',
-    pricePerKg: 45,
-    stockKg: 50,
+    nameTa: 'முருங்கைக்காய்',
+    categoryId: 'cat-daily',
+    price: 45,
     unit: 'kg',
     image: 'https://images.unsplash.com/photo-1597362925123-77861d3fbac7?auto=format&fit=crop&w=600&q=80',
     description: 'Fresh, tender moringa pods packed with iron and nutrients.',
-    inStock: true
+    stock: 50,
+    isOrganic: false,
+    isFeatured: true
   },
   {
-    id: 'veg-004',
+    id: 'prod-004',
     name: 'Raw Banana (Plantain)',
-    regionalName: 'ாாධேক்কா௏ஸ௏ / Vazhaikkai',
-    category: 'daily_essentials',
-    pricePerKg: 35,
-    stockKg: 70,
+    nameTa: 'வாழைக்காய்',
+    categoryId: 'cat-daily',
+    price: 35,
     unit: 'kg',
     image: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=600&q=80',
     description: 'Firm green cooking plantains for roasts, bajji, and poriyal.',
-    inStock: true
+    stock: 70,
+    isOrganic: false,
+    isFeatured: false
   },
   {
-    id: 'veg-005',
+    id: 'prod-005',
     name: 'Snake Gourd',
-    regionalName: 'புඡலங்কா௏ஸ௏ / Pudalangai',
-    category: 'gourds',
-    pricePerKg: 40,
-    stockKg: 40,
+    nameTa: 'புடலங்காய்',
+    categoryId: 'cat-gourds',
+    price: 40,
     unit: 'kg',
     image: 'https://images.unsplash.com/photo-1589927986089-35812388d1f4?auto=format&fit=crop&w=600&q=80',
     description: 'Tender, water-rich gourd suitable for kootu and stir-fry.',
-    inStock: true
+    stock: 40,
+    isOrganic: false,
+    isFeatured: false
   },
   {
-    id: 'veg-006',
+    id: 'prod-006',
     name: 'Palak (Spinach)',
-    regionalName: 'பஸலைକ்କ௉రை୏ / Pasalai Keerai',
-    category: 'leafy',
-    pricePerKg: 25,
-    stockKg: 60,
+    nameTa: 'பசலைக்கீரை',
+    categoryId: 'cat-leafy',
+    price: 25,
     unit: 'bunch',
     image: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=600&q=80',
     description: 'Crisp green broad leaves, washed and bundled fresh.',
-    inStock: true,
-    organic: true
+    stock: 60,
+    isOrganic: true,
+    isFeatured: true
   }
 ];
