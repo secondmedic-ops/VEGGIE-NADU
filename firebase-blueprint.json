@@ -1,0 +1,117 @@
+{
+  "entities": {
+    "Category": {
+      "title": "Category",
+      "description": "Product category for Veggie Nadu shop",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name_en": { "type": "string" },
+        "name_ta": { "type": "string" },
+        "slug": { "type": "string" },
+        "displayOrder": { "type": "number" },
+        "icon": { "type": "string" }
+      },
+      "required": ["id", "name_en", "name_ta", "slug"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Vegetable, fruit or grocery item sold at Veggie Nadu",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name_en": { "type": "string" },
+        "name_ta": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "description_en": { "type": "string" },
+        "description_ta": { "type": "string" },
+        "price": { "type": "number" },
+        "unit": { "type": "string", "enum": ["kg", "piece", "packet", "bunch", "500g", "250g"] },
+        "stock": { "type": "number" },
+        "images": { "type": "string" },
+        "isAvailable": { "type": "boolean" },
+        "isBulkOnly": { "type": "boolean" },
+        "featured": { "type": "boolean" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name_en", "name_ta", "categoryId", "price", "unit", "stock", "isAvailable"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer order details and delivery status",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "orderNumber": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "customerEmail": { "type": "string" },
+        "deliveryAddress": { "type": "string" },
+        "items": { "type": "string" },
+        "subtotal": { "type": "number" },
+        "deliveryFee": { "type": "number" },
+        "total": { "type": "number" },
+        "paymentMethod": { "type": "string", "enum": ["razorpay", "cod"] },
+        "paymentStatus": { "type": "string", "enum": ["pending", "paid", "cod_pending", "failed"] },
+        "orderStatus": { "type": "string", "enum": ["placed", "packed", "courier_assigned", "out_for_delivery", "delivered", "cancelled"] },
+        "borzoOrderId": { "type": "string" },
+        "borzoTrackingUrl": { "type": "string" },
+        "courierName": { "type": "string" },
+        "courierPhone": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "orderNumber", "customerName", "customerPhone", "deliveryAddress", "items", "total", "paymentMethod", "orderStatus"]
+    },
+    "BulkRequest": {
+      "title": "BulkRequest",
+      "description": "Bulk and catering inquiry from canteens, restaurants, or events",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "businessName": { "type": "string" },
+        "contactPerson": { "type": "string" },
+        "phone": { "type": "string" },
+        "itemsNeeded": { "type": "string" },
+        "estimatedQuantity": { "type": "string" },
+        "deliveryByDate": { "type": "string" },
+        "notes": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "contacted", "quoted", "confirmed", "rejected"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "businessName", "contactPerson", "phone", "itemsNeeded", "deliveryByDate", "status"]
+    },
+    "AdminUser": {
+      "title": "AdminUser",
+      "description": "Authorized staff admin account with role",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["inventory", "orders", "owner"] },
+        "name": { "type": "string" }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Vegetable and grocery store categories"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Product catalog"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Customer purchase orders"
+    },
+    "/bulk_requests/{requestId}": {
+      "schema": "BulkRequest",
+      "description": "Catering and bulk produce quotes"
+    },
+    "/admins/{adminId}": {
+      "schema": "AdminUser",
+      "description": "Admin staff roles"
+    }
+  }
+}

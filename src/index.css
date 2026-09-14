@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Tamil', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background-color: #faf8f5;
+    color: #14281d;
+    min-height: 100vh;
+  }
+
+  h1, h2, .font-serif-title {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
